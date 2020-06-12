@@ -1,11 +1,15 @@
 package com.example.expensemanagement
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.expensemanagement.base.util.FragmentNavigation
 import com.example.expensemanagement.base.util.FragmentNavigationImp
 import com.example.expensemanagement.base.util.FragmentNavigationProvider
+import com.example.expensemanagement.base.view.AppToolbar
+import com.example.expensemanagement.model.SinhVien
 import com.example.expensemanagement.view.HomeFragment
+import java.util.ArrayList
 
 class MainActivity : AppCompatActivity(), FragmentNavigationProvider {
     private lateinit var fragmentNavigation: FragmentNavigation
@@ -18,6 +22,7 @@ class MainActivity : AppCompatActivity(), FragmentNavigationProvider {
 
     private fun initHomeFragment() {
         fragmentNavigation.addFragment(HomeFragment())
+        var app = AppToolbar()
     }
 
     // khởi tạo fragmentNavigation.
@@ -25,4 +30,6 @@ class MainActivity : AppCompatActivity(), FragmentNavigationProvider {
         fragmentNavigation = FragmentNavigationImp(this, R.id.content)
         return fragmentNavigation
     }
+
+
 }
