@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".view.AddExpenseFragment">
+
+    <include layout="@layout/view_toolbar" />
+
+
+    <Spinner
+        android:id="@+id/spinnerTypeTrans"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <Spinner
+        android:id="@+id/spinnerTypeFush"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <android.inputmethodservice.ExtractEditText
+        android:id="@+id/edtAmount"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <TextView
+        android:id="@+id/btnAddEx"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:layout_width="180dp"
+        android:textColor="@color/colorAccent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_boder"
+        android:gravity="center"
+        android:text="Thêm" />
+
+</LinearLayout>

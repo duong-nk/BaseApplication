@@ -1,2 +1,4 @@
 rootProject.name='ExpenseManagement'
 include ':app'
+include ':duongnklibrary'
+

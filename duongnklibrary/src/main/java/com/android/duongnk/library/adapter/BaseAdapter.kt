@@ -1,4 +1,4 @@
-package com.example.expensemanagement.base.adapter
+package com.android.duongnk.library.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

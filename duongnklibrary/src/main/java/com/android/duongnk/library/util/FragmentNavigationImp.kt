@@ -1,4 +1,4 @@
-package com.example.expensemanagement.base.util
+package com.android.duongnk.library.util
 
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
@@ -59,11 +59,13 @@ class FragmentNavigationImp(var activity: AppCompatActivity, @IdRes var containe
         }
     }
 
+    //back tới fragment trước đó đc chỉ định bằng tag của fragment
     override fun backBeforeFragment(tag: String) {
         activity.supportFragmentManager
             .popBackStack(tag, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
+    // sử dụng trong fragment add fragment
     override fun replaceChildFragment(
         childFragmentManager: FragmentManager,
         fragment: Fragment,
