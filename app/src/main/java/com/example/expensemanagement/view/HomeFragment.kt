@@ -10,9 +10,9 @@ import android.widget.RelativeLayout
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.duongnk.library.adapter.BaseAdapter
+import com.android.duongnk.library.adapter.ItemViewClickListener
 import com.example.expensemanagement.R
-import com.example.expensemanagement.base.adapter.BaseAdapter
-import com.example.expensemanagement.base.adapter.ItemViewClickListener
 import com.example.expensemanagement.base.fragment.BaseFragment
 import com.example.expensemanagement.base.genericValue.GenericClass
 import com.example.expensemanagement.datasingerten.DataApplicationSingleton
@@ -69,7 +69,7 @@ class HomeFragment : BaseFragment(), ItemViewClickListener {
 //                fragmentNavigation.back()
 //            )
 //        }).build())
-        var viewHolder = ViewHolderSinhVien(activity!!.window.decorView.rootView, this)
+        val viewHolder = ViewHolderSinhVien(activity!!.window.decorView.rootView, this)
         baseAdapter =
             BaseAdapter(CreatDataSinhVien(), context!!, R.layout.item_expense, viewHolder)
         recyclerView.layoutManager = LinearLayoutManager(context)
