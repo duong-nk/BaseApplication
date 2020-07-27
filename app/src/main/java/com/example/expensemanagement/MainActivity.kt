@@ -3,10 +3,12 @@ package com.example.expensemanagement
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.android.duongnk.library.baseAplication.BaseActivityApplication
 import com.android.duongnk.library.datasingerten.DataApplicationSingleton
 import com.android.duongnk.library.util.FragmentNavigation
 import com.android.duongnk.library.util.FragmentNavigationImp
 import com.android.duongnk.library.util.FragmentNavigationProvider
+import com.example.expensemanagement.base.activity.BaseActivity
 
 import com.example.expensemanagement.base.view.AppToolbar
 import com.example.expensemanagement.model.SinhVien
@@ -16,12 +18,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 
-class MainActivity : AppCompatActivity(), FragmentNavigationProvider {
-    private lateinit var fragmentNavigation: FragmentNavigation
+class MainActivity : BaseActivityApplication(), FragmentNavigationProvider {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        provideNavigation()
+        provideNavigation(R.id.content)
         initHomeFragment()
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
@@ -33,11 +34,6 @@ class MainActivity : AppCompatActivity(), FragmentNavigationProvider {
 
     }
 
-    // khởi tạo fragmentNavigation.
-    override fun provideNavigation(): FragmentNavigation? {
-        fragmentNavigation = FragmentNavigationImp(this, R.id.content)
-        return fragmentNavigation
-    }
 
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->

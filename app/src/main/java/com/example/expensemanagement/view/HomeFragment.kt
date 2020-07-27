@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.duongnk.library.adapter.BaseAdapter
 import com.android.duongnk.library.adapter.ItemViewClickListener
+import com.android.duongnk.library.baseAplication.BaseFragmentApplication
 import com.example.expensemanagement.R
 import com.example.expensemanagement.base.fragment.BaseFragment
 import com.example.expensemanagement.base.genericValue.GenericClass
@@ -22,7 +23,7 @@ import com.example.expensemanagement.view.viewHolder.ViewHolderSinhVien
 import kotlinx.android.synthetic.main.home_fragment.*
 import java.util.ArrayList
 
-class HomeFragment : BaseFragment(), ItemViewClickListener {
+class HomeFragment : BaseFragmentApplication(), ItemViewClickListener {
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -42,6 +43,7 @@ class HomeFragment : BaseFragment(), ItemViewClickListener {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         initView()
+//        fragmentNavigation.addFragment(AddExpenseFragment())
 //        popData(CreatDataSinhVien(), mGenericClass,recyclerView)
 
     }
@@ -72,8 +74,8 @@ class HomeFragment : BaseFragment(), ItemViewClickListener {
         val viewHolder = ViewHolderSinhVien(activity!!.window.decorView.rootView, this)
         baseAdapter =
             BaseAdapter(CreatDataSinhVien(), context!!, R.layout.item_expense, viewHolder)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = baseAdapter
+        recyclerViewMax.layoutManager = LinearLayoutManager(context)
+        recyclerViewMax.adapter = baseAdapter
 
 
     }

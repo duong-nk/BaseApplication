@@ -1,5 +1,11 @@
 package com.android.duongnk.library.util
 
+import android.view.View
+
 interface FragmentNavigationProvider {
-    fun provideNavigation(): FragmentNavigation?
+    /**
+     * init fragmentNavigation common view
+     */
+    fun provideNavigation(viewLayout: Int): FragmentNavigation?
+
 }
