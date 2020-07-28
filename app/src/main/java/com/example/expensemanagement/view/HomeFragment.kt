@@ -76,8 +76,8 @@ class HomeFragment : BaseFragmentApplication(), ItemViewClickListener {
             BaseAdapter(CreatDataSinhVien(), context!!, R.layout.item_expense, viewHolder)
         recyclerViewMax.layoutManager = LinearLayoutManager(context)
         recyclerViewMax.adapter = baseAdapter
-
-
+//        mPreferences.saveString("duongnk","Lưu data thành công")
+        Log.e("duongnk",mPreferences.getString("duongnk"))
     }
 
     override fun onResume() {
@@ -97,7 +97,6 @@ class HomeFragment : BaseFragmentApplication(), ItemViewClickListener {
         arrayList.add(ExpenseModel("Shopping", "tiền ra", "20,000,000 VND"))
         arrayList.add(ExpenseModel("Shopping", "tiền ra", "20,000,000 VND"))
         arrayList.add(ExpenseModel("Shopping", "tiền ra", "20,000,000 VND"))
-
         return DataApplicationSingleton.instance.getArrA()
     }
 }

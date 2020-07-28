@@ -3,6 +3,7 @@ package com.example.expensemanagement.view
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,10 +42,10 @@ class AddExpenseFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         this.setToolbar(AppToolbar.Builder().setTitle("Tạo lịch sử chi tiêu").setOnBackPress(View.OnClickListener {
             println(
-                fragmentNavigation.back()
+                mFragmentNavigation.back()
             )
         }).build())
-
+        Log.e("duongk", mPreferences.getString("duongnk"))
         val arrS = ArrayList<String>()
         arrS.add("Mua sắm")
         arrS.add("Đi ăn nhậu")
@@ -72,10 +73,14 @@ class AddExpenseFragment : BaseFragment() {
 
         btnAddEx.setOnClickListener {
             val ex = Expen("duongnk")
-            val expenseModel = ExpenseModel(spinnerTypeTrans.selectedItem.toString(),spinnerTypeFush.selectedItem.toString(),edtAmount.text.toString())
+            val expenseModel = ExpenseModel(
+                spinnerTypeTrans.selectedItem.toString(),
+                spinnerTypeFush.selectedItem.toString(),
+                edtAmount.text.toString()
+            )
             arr.add(expenseModel)
             DataApplicationSingleton.instance.setArrA(arr)
-            fragmentNavigation.back()
+            mFragmentNavigation.back()
             ex.set = "lồn"
             try {
                 val imm =

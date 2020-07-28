@@ -25,11 +25,13 @@ class MainActivity : BaseActivityApplication(), FragmentNavigationProvider {
         provideNavigation(R.id.content)
         initHomeFragment()
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
+        if(mPreferences!=null){
+            mPreferences.saveString("duongnk","MainActivity")
+        }
     }
 
     private fun initHomeFragment() {
-        fragmentNavigation.replaceFragment(HomeFragment(),false)
+        mFragmentNavigation.replaceFragment(HomeFragment(),false)
         var f : FragmentNavigation
 
     }
@@ -39,11 +41,11 @@ class MainActivity : BaseActivityApplication(), FragmentNavigationProvider {
         BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_call ->{
-                    fragmentNavigation.newRootFragment(HomeFragment())
+                    mFragmentNavigation.newRootFragment(HomeFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_search -> {
-                    fragmentNavigation.addFragment(AddExpenseFragment())
+                    mFragmentNavigation.addFragment(AddExpenseFragment())
                     return@OnNavigationItemSelectedListener true
                 }
             }
