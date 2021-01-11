@@ -14,6 +14,7 @@ class BaseAdapter(
     var mArrObjects: List<*>,
     var mContext: Context,
     var mLayout: Int,
+    var mItemCount: Int = 0,
     var viewHolder: RecyclerView.ViewHolder
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -22,10 +23,17 @@ class BaseAdapter(
     }
 
     override fun getItemCount(): Int {
-        return mArrObjects.size
+        return if (mItemCount == 0)
+            mArrObjects.size
+        else mItemCount;
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as BaseItemViewHolder).onBilViewHolderBase(mContext, viewHolder, mArrObjects, position)
+        (holder as BaseItemViewHolder).onBilViewHolderBase(
+            mContext,
+            viewHolder,
+            mArrObjects,
+            position
+        )
     }
 }
