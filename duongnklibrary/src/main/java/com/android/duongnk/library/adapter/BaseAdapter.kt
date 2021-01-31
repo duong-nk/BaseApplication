@@ -26,6 +26,16 @@ class BaseAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as BaseItemViewHolder).onBilViewHolderBase(mContext, viewHolder, mArrObjects, position)
+        (holder as BaseItemViewHolder).onBilViewHolderBase(
+            mContext,
+            viewHolder,
+            mArrObjects,
+            position
+        )
+    }
+
+    fun updateData(mArrObjects: List<*>) {
+        this.mArrObjects = mArrObjects
+        this.notifyDataSetChanged()
     }
 }

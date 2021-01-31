@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProviders
+import com.android.duongnk.library.commonfuntions.CommonFuntions
 import com.example.expensemanagement.R
 import com.example.expensemanagement.base.fragment.BaseFragment
 import com.example.expensemanagement.base.view.AppToolbar
@@ -46,6 +47,7 @@ class AddExpenseFragment : BaseFragment() {
             )
         }).build())
         Log.e("duongk", mPreferences.getString("duongnk"))
+        CommonFuntions.setDigitsEditText(edtAmount,"",5)
         val arrS = ArrayList<String>()
         arrS.add("Mua sắm")
         arrS.add("Đi ăn nhậu")
