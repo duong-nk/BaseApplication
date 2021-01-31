@@ -1,10 +1,14 @@
 package com.android.duongnk.library.sharedpreference;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.security.keystore.KeyGenParameterSpec;
+import android.security.keystore.KeyProperties;
 
 
 import androidx.security.crypto.EncryptedSharedPreferences;
+import androidx.security.crypto.MasterKey;
 import androidx.security.crypto.MasterKeys;
 
 import com.google.gson.Gson;
@@ -24,19 +28,34 @@ public class PreferencesHelper implements RxPreferenceHelper {
     private static final String PREF_NAME = "pref_sb";
     private SharedPreferences pref;
 
+    static final String MASTER_KEY_ALIAS = MasterKey.DEFAULT_MASTER_KEY_ALIAS;
+    static final int KEY_SIZE = MasterKey.DEFAULT_AES_GCM_MASTER_KEY_SIZE;
+
+    private static final String ANDROID_KEYSTORE = "AndroidKeyStore";
     /**
      * Khởi tạo để mã hóa thông tin data
      *
      * @param context
      */
+    @SuppressLint("NewApi")
     @Inject
     public PreferencesHelper(Context context) {
         try {
-            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
+            KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
+                    MASTER_KEY_ALIAS,
+                    KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+                    .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+                    .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+                    .setKeySize(KEY_SIZE)
+                    .build();
+            MasterKey masterKey = new MasterKey.Builder(context)
+                    .setKeyGenParameterSpec(spec)
+                    .build();
+//            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
             pref = EncryptedSharedPreferences.create(
-                    PREF_NAME,
-                    masterKeyAlias,
                     context,
+                    PREF_NAME,
+                    null,
                     EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
                     EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
             );
