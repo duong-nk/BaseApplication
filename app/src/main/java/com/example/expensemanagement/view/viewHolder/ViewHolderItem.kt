@@ -10,13 +10,14 @@ import com.example.expensemanagement.R
 import com.example.expensemanagement.model.ExpenseModel
 import com.example.expensemanagement.model.SinhVien
 
-class ViewHolderSinhVien(
-    itemView: View,
-    itemViewClickListener: ItemViewClickListener
-) : BaseViewHolder(itemView, itemViewClickListener) {
+class ViewHolderItem(itemView: View, itemViewClickListener: ItemViewClickListener)
+    : BaseViewHolder(itemView, itemViewClickListener) {
+
+
     lateinit var tvNameType: AppCompatTextView
     lateinit var tvAmount: AppCompatTextView
     lateinit var tvFund: AppCompatTextView
+
     override fun initViewHolder(v: View) {
         if (super.mData[0] is ExpenseModel) {
             tvNameType = v.findViewById(R.id.typeTrans)
@@ -24,7 +25,6 @@ class ViewHolderSinhVien(
             tvFund = v.findViewById(R.id.tvType)
         }
     }
-
     override fun onBilViewHolder(obj: List<*>, pos: Int, context: Context) {
         if (super.mData[pos] is ExpenseModel) {
             var expenseModel: ExpenseModel = mData[pos] as ExpenseModel

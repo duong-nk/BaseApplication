@@ -1,12 +1,10 @@
 package com.example.expensemanagement.view
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,12 +12,11 @@ import com.android.duongnk.library.adapter.BaseAdapter
 import com.android.duongnk.library.adapter.ItemViewClickListener
 import com.android.duongnk.library.baseAplication.BaseFragmentApplication
 import com.example.expensemanagement.R
-import com.example.expensemanagement.base.fragment.BaseFragment
 import com.example.expensemanagement.base.genericValue.GenericClass
 import com.example.expensemanagement.datasingerten.DataApplicationSingleton
 import com.example.expensemanagement.model.ExpenseModel
 import com.example.expensemanagement.model.SinhVien
-import com.example.expensemanagement.view.viewHolder.ViewHolderSinhVien
+import com.example.expensemanagement.view.viewHolder.ViewHolderItem
 import kotlinx.android.synthetic.main.home_fragment.*
 import java.util.ArrayList
 
@@ -71,7 +68,7 @@ class HomeFragment : BaseFragmentApplication(), ItemViewClickListener {
 //                fragmentNavigation.back()
 //            )
 //        }).build())
-        val viewHolder = ViewHolderSinhVien(activity!!.window.decorView.rootView, this)
+        val viewHolder = ViewHolderItem(activity!!.window.decorView.rootView, this)
         baseAdapter =
             BaseAdapter(CreatDataSinhVien(), context!!, R.layout.item_expense, viewHolder)
         recyclerViewMax.layoutManager = LinearLayoutManager(context)
