@@ -15,7 +15,7 @@ Step 2: Add the dependency in build.gradle (Module:app)
 
 implementation 'com.github.duong-nk:BaseApplication:Tag'
 
-![List of plants](screenshots\build.grad.PNG "dependency")
+![List of plants](screenshots\buildgrad.PNG "dependency")
 
 BaseAdapter
 -----------
