@@ -3,6 +3,7 @@ package com.android.duongnk.library.sharedpreference;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 
@@ -40,7 +41,9 @@ public class PreferencesHelper implements RxPreferenceHelper {
     @SuppressLint("NewApi")
     @Inject
     public PreferencesHelper(Context context) {
-        try {
+        pref = PreferenceManager
+                .getDefaultSharedPreferences(context);
+//        try {
 //            KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
 //                    MASTER_KEY_ALIAS,
 //                    KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
@@ -52,16 +55,16 @@ public class PreferencesHelper implements RxPreferenceHelper {
 //                    .setKeyGenParameterSpec(spec)
 //                    .build();
 //            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
-            pref = EncryptedSharedPreferences.create(
-                    context,
-                    PREF_NAME,
-                    null,
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            );
-        } catch (GeneralSecurityException | IOException e) {
-            e.printStackTrace();
-        }
+//            pref = EncryptedSharedPreferences.create(
+//                    context,
+//                    PREF_NAME,
+//                    null,
+//                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+//                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+//            );
+//        } catch (GeneralSecurityException | IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override
