@@ -29,7 +29,7 @@ ViewHolder
 ----------
 ![List of plants](screenshots/viewholder.png "A ViewHolder Exemple")
 
-Introduction
+JetPack
 -----------
 ![List of plants](screenshots/jetpack_donut.png "Introduction")
 
