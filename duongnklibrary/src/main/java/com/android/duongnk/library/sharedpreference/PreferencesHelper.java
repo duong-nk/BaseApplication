@@ -41,16 +41,16 @@ public class PreferencesHelper implements RxPreferenceHelper {
     @Inject
     public PreferencesHelper(Context context) {
         try {
-            KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
-                    MASTER_KEY_ALIAS,
-                    KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
-                    .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-                    .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-                    .setKeySize(KEY_SIZE)
-                    .build();
-            MasterKey masterKey = new MasterKey.Builder(context)
-                    .setKeyGenParameterSpec(spec)
-                    .build();
+//            KeyGenParameterSpec spec = new KeyGenParameterSpec.Builder(
+//                    MASTER_KEY_ALIAS,
+//                    KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+//                    .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+//                    .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+//                    .setKeySize(KEY_SIZE)
+//                    .build();
+//            MasterKey masterKey = new MasterKey.Builder(context)
+//                    .setKeyGenParameterSpec(spec)
+//                    .build();
 //            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
             pref = EncryptedSharedPreferences.create(
                     context,

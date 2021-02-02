@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">ExpenseManagement</string>
+    <string name="app_name">BaseApplication</string>
     <string name="thongbao">Thông báo</string>
 </resources>
