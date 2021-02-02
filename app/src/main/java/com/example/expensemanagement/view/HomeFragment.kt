@@ -69,10 +69,11 @@ class HomeFragment : BaseFragmentApplication(), ItemViewClickListener {
 //            )
 //        }).build())
         val viewHolder = ViewHolderItem(activity!!.window.decorView.rootView, this)
-        baseAdapter =
+         baseAdapter =
             BaseAdapter(CreatDataSinhVien(), context!!, R.layout.item_expense, viewHolder)
         recyclerViewMax.layoutManager = LinearLayoutManager(context)
         recyclerViewMax.adapter = baseAdapter
+
 //        mPreferences.saveString("duongnk","Lưu data thành công")
         Log.e("duongnk",mPreferences.getString("duongnk"))
     }
