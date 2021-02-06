@@ -100,7 +100,12 @@ object CommonFuntions {
     fun getYearInDate(date: Date?): String? {
         return DateFormat.format("yyyy", date) as String
     }
-
+    fun getDateNow():String{
+        val date = Calendar.getInstance().time
+        val formatter = SimpleDateFormat.getDateTimeInstance() //or use getDateInstance()
+        val formatedDate = formatter.format(date)
+        return  formatedDate.toString()
+    }
     /**
      * input : CommonFuntions.hmsTimeFormatter(66000)
      * out put : 00:01:06
