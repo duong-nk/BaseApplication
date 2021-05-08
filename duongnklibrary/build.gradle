@@ -51,5 +51,6 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
     // security data
     implementation "androidx.security:security-crypto:1.1.0-alpha01"
-
+    //loadmore adapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 }

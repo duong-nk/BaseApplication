@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.chad.library.adapter.base.module.LoadMoreModule
 
 /**
  * Base Adapter sẽ chịu trách nhiệm nhận ViewHolder đc tạo custom riêng ở BaseItemViewHolder bên ngoài chuyển vào để khởi tạo view và các Action cho các component
@@ -15,7 +16,7 @@ class BaseAdapter(
     var mContext: Context,
     var mLayout: Int,
     var viewHolder: RecyclerView.ViewHolder
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>()  , LoadMoreModule {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         var view: View = LayoutInflater.from(parent.context).inflate(mLayout, parent, false)
         return BaseItemViewHolder(view, viewHolder)
