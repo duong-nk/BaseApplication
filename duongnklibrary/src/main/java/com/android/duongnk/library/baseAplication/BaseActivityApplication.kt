@@ -8,6 +8,7 @@ import com.android.duongnk.library.sharedpreference.PreferencesHelper
 import com.android.duongnk.library.util.FragmentNavigation
 import com.android.duongnk.library.util.FragmentNavigationImp
 import com.android.duongnk.library.util.FragmentNavigationProvider
+import java.lang.Exception
 
 abstract class BaseActivityApplication : AppCompatActivity(), FragmentNavigationProvider {
 
@@ -23,9 +24,9 @@ abstract class BaseActivityApplication : AppCompatActivity(), FragmentNavigation
             return view;
         }
 
-        lateinit var mPreferences: PreferencesHelper
+        var mPreferences: PreferencesHelper? = null
         fun getPreference(): PreferencesHelper {
-            return mPreferences
+            return mPreferences!!
         }
 
     }
@@ -38,7 +39,12 @@ abstract class BaseActivityApplication : AppCompatActivity(), FragmentNavigation
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mPreferences = PreferencesHelper(applicationContext)
+        try {
+            mPreferences = PreferencesHelper(applicationContext)
+
+        } catch (e: Exception) {
+            Log.e("duongnk", "onCreate: " + e.toString())
+        }
     }
 
     override fun onStart() {

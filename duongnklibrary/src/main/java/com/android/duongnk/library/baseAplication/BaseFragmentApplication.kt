@@ -11,24 +11,30 @@ import com.android.duongnk.library.commonfuntions.CommonFuntions
 import com.android.duongnk.library.sharedpreference.PreferencesHelper
 import com.android.duongnk.library.util.FragmentNavigation
 import com.android.duongnk.library.util.FragmentNavigationProvider
+import java.lang.Exception
 
 open class BaseFragmentApplication : Fragment() {
 
     private lateinit var mView: View
     protected lateinit var mFragmentNavigation: FragmentNavigation
-    lateinit var mContext: Context
-    lateinit var mPreferences: PreferencesHelper
+    private var mContext: Context? = null
+    var mPreferences: PreferencesHelper? = null
 
     /**
      * init fragmentNavigation common view
      */
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        this.mContext = context
-        mFragmentNavigation =
-            (activity as FragmentNavigationProvider?)?.provideNavigation(BaseActivityApplication.getViewGroup())!!
-        mPreferences = BaseActivityApplication.getPreference()
-        Log.e("lifecycle", "Fragment onAttach: " + CommonFuntions.getDateNow())
+        try {
+            this.mContext = context
+            mFragmentNavigation =
+                (activity as FragmentNavigationProvider?)?.provideNavigation(BaseActivityApplication.getViewGroup())!!
+            mPreferences = BaseActivityApplication.getPreference()
+            Log.e("lifecycle", "Fragment onAttach: " + CommonFuntions.getDateNow())
+        } catch (e: Exception) {
+            Log.e("duongnk", "onAttach: " + e.toString())
+        }
+
     }
 
     override fun onAttachFragment(childFragment: Fragment) {
@@ -104,7 +110,7 @@ open class BaseFragmentApplication : Fragment() {
     }
 
     fun getContextActivity(): Context {
-        return this.mContext
+        return this.mContext!!
     }
 
 }

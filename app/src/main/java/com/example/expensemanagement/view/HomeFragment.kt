@@ -75,7 +75,7 @@ class HomeFragment : BaseFragmentApplication(), ItemViewClickListener {
         recyclerViewMax.adapter = baseAdapter
 
 //        mPreferences.saveString("duongnk","Lưu data thành công")
-        Log.e("duongnk",mPreferences.getString("duongnk"))
+        Log.e("duongnk",mPreferences!!.getString("duongnk"))
     }
 
     override fun onResume() {

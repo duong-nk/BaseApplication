@@ -46,7 +46,7 @@ class AddExpenseFragment : BaseFragment() {
                 mFragmentNavigation.back()
             )
         }).build())
-        Log.e("duongk", mPreferences.getString("duongnk"))
+        Log.e("duongk", mPreferences!!.getString("duongnk"))
         CommonFuntions.setDigitsEditText(edtAmount,"",5)
         val arrS = ArrayList<String>()
         arrS.add("Mua sắm")

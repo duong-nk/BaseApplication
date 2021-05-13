@@ -65,7 +65,7 @@ class MainActivity : BaseActivityApplication(), FragmentNavigationProvider {
             "Xác nhận",
             DialogInterface.OnClickListener { dialog, which -> dialog.dismiss() }).show()
 
-        mPreferences.saveString("duongnk", "MainActivity")
+        mPreferences?.saveString("duongnk", "MainActivity")
     }
 
     private fun initHomeFragment() {
